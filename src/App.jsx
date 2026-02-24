@@ -43,7 +43,7 @@ function App() {
       
       setJugadorActual({ nombre: nombre, tag: tag });
 
-      const resPerfil = await fetch(`http://localhost:3000/api/jugador/${nombre}/${tag}`);
+      const resPerfil = await fetch(`https://tracker-lol-backend.onrender.com/api/jugador/${nombre}/${tag}`);
       const dataPerfil = await resPerfil.json();
       
       if (dataPerfil.error) {
@@ -53,7 +53,7 @@ function App() {
       }
       setPerfil(dataPerfil); 
 
-      const resHistorial = await fetch(`http://localhost:3000/api/historial/${nombre}/${tag}?inicio=0&cantidad=10`);
+      const resHistorial = await fetch(`https://tracker-lol-backend.onrender.com/api/historial/${nombre}/${tag}?inicio=0&cantidad=10`);
       const dataHistorial = await resHistorial.json();
       
       setPartidas(dataHistorial); 
@@ -71,7 +71,7 @@ function App() {
     const nuevoInicio = inicio + 10;
     
     try {
-      const respuesta = await fetch(`http://localhost:3000/api/historial/${nombre}/${tag}?inicio=${nuevoInicio}&cantidad=10`);
+      const respuesta = await fetch(`https://tracker-lol-backend.onrender.com/api/historial/${nombre}/${tag}?inicio=${nuevoInicio}&cantidad=10`);
       const datosNuevos = await respuesta.json();
       setInicio(nuevoInicio);
       setPartidas((partidasViejas) => [...partidasViejas, ...datosNuevos]);
